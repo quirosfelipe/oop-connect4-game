@@ -3,6 +3,7 @@ import { ColumnWinInspector } from './column-win-inspector.js';
 import { RowWinInspector } from './row-win-inspector.js';
 import { DiagonalWinInspector } from './diagonal-win-inspector.js';
 
+
 export class Game {
     constructor(player1, player2) {
         this.player1 = player1;
@@ -32,7 +33,7 @@ export class Game {
         }
     }
     playInColumn(columnIndex) {
-        console.log(this.columns);
+        // console.log(this.columns);
         //console.log(this.columns.rowPositions)
         this.columns[columnIndex].add(this.currentPlayer);
         if (this.currentPlayer === 1) {

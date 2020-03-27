@@ -1,6 +1,14 @@
 import { Game } from './game.js';
 import { Column } from './column.js';
+import { GameJsonSerializer } from './gameJsonSerializer.js';
+import { GameJsonDeserializer } from './gameJsonDeserializer.js';
 let game = undefined;
+const json = window.localStorage.getItem('connect-four');
+if (json) {
+    const deserializer = new GameJsonDeserializer(json);
+    game = deserializer.deserialize();
+    updateUI();
+}
 function updateUI() {
     let board = document.getElementById('board-holder');
     let gameName = document.getElementById('game-name');
@@ -74,9 +82,14 @@ window.addEventListener('DOMContentLoaded', () => {
         if (event.target.id.includes('column-')) {
             let columnId = Number.parseInt(event.target.id[7]);
             game.playInColumn(columnId);
+
+            const serializer = new GameJsonSerializer(game);
+            const json = serializer.serialize();
+            window.localStorage.setItem('connect-four', json);
         };
         updateUI();
     })
+
 });
 
 
