@@ -75,10 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
             let columnId = Number.parseInt(event.target.id[7]);
             game.playInColumn(columnId);
         };
-
         updateUI();
-
-
     })
 });
 
